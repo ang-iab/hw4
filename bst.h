@@ -470,7 +470,11 @@ template<class Key, class Value>
 void BinarySearchTree<Key, Value>::insert(const std::pair<const Key, Value> &keyValuePair)
 {
     // TODO
-    if (empty()) root_ = new Node<Key, Value>(keyValuePair.first, keyValuePair.second, nullptr);
+    if (empty())
+    {
+        root_ = new Node<Key, Value>(keyValuePair.first, keyValuePair.second, nullptr);
+        return;
+    }
 
     Node<Key, Value>* curr = root_;
     Node<Key, Value>* parent = nullptr;
@@ -696,6 +700,8 @@ void BinarySearchTree<Key, Value>::clear()
         delete s2.top();
         s2.pop();
     }
+
+    root_ = nullptr;
 }
 
 
