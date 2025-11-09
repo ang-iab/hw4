@@ -30,14 +30,16 @@ int findH(Node* root)
 bool equalPaths(Node * root)
 {
     // Add your code below
-    if (root == nullptr) return false;
+    if (root == nullptr) return true;
     else if (root->left == nullptr && root->right == nullptr) return true;
-    else if (root->left == nullptr || root->right == nullptr) return false;
 
-    int leftH = findH(root->left);
-    int rightH = findH(root->right);
+    if (root->left != nullptr && root->right != nullptr)
+    {
+        int leftH = findH(root->left);
+        int rightH = findH(root->right);
 
-    if (leftH != rightH) return false;
+        if (leftH != rightH) return false;
+    }
 
     return equalPaths(root->left) && equalPaths(root->right);
 }
