@@ -141,7 +141,7 @@ protected:
     void rotateRight(Node<Key, Value>* node);
     void rotateLeft(Node<Key, Value>* node);
     void insertFix(AVLNode<Key,Value>* p, AVLNode<Key,Value>* n);
-    AVLNode<Key, Value>* find(const Key& key);
+    AVLNode<Key, Value>* intFind(const Key& key);
     AVLNode<Key, Value>* findPredecessor(AVLNode<Key, Value>* current);
     void removeFix(AVLNode<Key, Value>* n, int8_t diff);
 
@@ -411,7 +411,7 @@ void AVLTree<Key, Value>::insert (const std::pair<const Key, Value> &new_item)
 
 // My Helper Function
 template<class Key, class Value>
-AVLNode<Key, Value>* AVLTree<Key, Value>::find(const Key& key)
+AVLNode<Key, Value>* AVLTree<Key, Value>::intFind(const Key& key)
 {
     Node<Key, Value>* curr = this->root_;
 
@@ -608,7 +608,7 @@ template<class Key, class Value>
 void AVLTree<Key, Value>:: remove(const Key& key)
 {
     // TODO
-    AVLNode<Key, Value>* n = find(key);
+    AVLNode<Key, Value>* n = intFind(key);
 
     if (n == nullptr) return;
 
